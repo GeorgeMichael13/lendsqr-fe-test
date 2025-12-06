@@ -1,0 +1,58 @@
+@import '../../styles/variables';
+
+.tableContainer {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 8px;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 900px;
+}
+
+.th {
+  text-align: left;
+  padding: 20px 24px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #545f7d;
+  border-bottom: 1px solid #e0e0e0;
+  background: white;
+}
+
+.sortable {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  user-select: none;
+
+  &:hover {
+    color: var(--indigo);
+  }
+}
+
+.sortIcon {
+  opacity: 0.3;
+}
+
+.tr {
+  border-bottom: 1px solid #f0f0f0;
+  transition: background 0.2s;
+
+  &:hover {
+    background: #f8fffe;
+  }
+}
+
+.td {
+  padding: 20px 24px;
+  font-size: 14px;
+  color: #213f7d;
+  vertical-align: middle;
+}

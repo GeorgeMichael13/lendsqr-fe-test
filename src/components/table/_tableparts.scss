@@ -1,0 +1,39 @@
+// Create one file: src/components/table/_tableParts.scss
+// Then import it in both
+
+.th {
+  padding: 20px 24px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #545f7d;
+  border-bottom: 1px solid #e0e0e0;
+  background: white;
+  text-align: left;
+}
+
+.sortable {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &:hover {
+    color: var(--indigo);
+  }
+}
+
+.sortIcon {
+  opacity: 0.3;
+  font-size: 12px;
+}
+
+.tr:hover {
+  background: #f8fffe;
+}
+
+.td {
+  padding: 20px 24px;
+  font-size: 14px;
+  color: #213f7d;
+}
