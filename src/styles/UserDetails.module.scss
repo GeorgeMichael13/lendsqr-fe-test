@@ -1,0 +1,100 @@
+.container { padding: 32px; max-width: 1200px; margin: 0 auto; }
+
+.backBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  color: #39cdcc;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 24px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.actions {
+  display: flex;
+  gap: 16px;
+}
+
+.userCard {
+  background: white;
+  border-radius: 8px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.tabs {
+  display: flex;
+  gap: 40px;
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 32px;
+}
+
+.tab {
+  padding: 16px 0;
+  border: none;
+  background: none;
+  font-size: 16px;
+  color: #545f7d;
+  cursor: pointer;
+  position: relative;
+
+  &.active {
+    color: #39cdcc;
+    font-weight: 600;
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: #39cdcc;
+      border-radius: 2px;
+    }
+  }
+}
+
+.section {
+  background: white;
+  padding: 32px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+}
+
+.label {
+  font-size: 12px;
+  color: #545f7d;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.value {
+  font-size: 16px;
+  color: #213f7d;
+  font-weight: 500;
+}
