@@ -1,0 +1,36 @@
+@import '../../styles/variables'; // Make sure this path is correct
+
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 100px;           // Perfect pill shape like in Figma
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: capitalize;
+  line-height: 1.4;
+  white-space: nowrap;
+
+  // Default fallback (should never be used)
+  background: #6c757d;
+  color: white;
+
+  &.active {
+    background: #e6f4ea;         // Light green background
+    color: #28a745;               // Dark green text
+  }
+
+  &.inactive {
+    background: #f8f9fa;          // Light gray background
+    color: #6c757d;               // Gray text
+  }
+
+  &.pending {
+    background: #fff3cd;          // Light yellow background
+    color: #ffc107;               // Dark yellow/amber text
+  }
+
+  &.blacklisted {
+    background: #f8d7da;          // Light red-ish background
+    color: #dc3545;               // Red text
+  }
+}

@@ -1,0 +1,15 @@
+:root {
+  --indigo: #1A1D2E;      /* Sidebar bg, headings */
+  --cyan: #17A2B8;         /* Buttons, links, active */
+  --purple: #6F42C1;       /* Users icon */
+  --blue: #007BFF;         /* Active users */
+  --pink: #E83E8C;         /* Savings */
+  --gray-light: #F8F9FA;   /* Main bg */
+  --gray-med: #6C757D;     /* Subtext */
+  --gray-dark: #343A40;    /* Borders */
+  --white: #FFFFFF;
+  --border-radius: 8px;
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+  --spacing-xs: 8px; --spacing-sm: 12px; --spacing-md: 16px; --spacing-lg: 24px; --spacing-xl: 32px;
+}

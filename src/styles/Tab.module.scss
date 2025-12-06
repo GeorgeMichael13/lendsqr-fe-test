@@ -1,0 +1,66 @@
+@import '../../styles/variables';
+
+.tabsContainer {
+  display: flex;
+  gap: 32px;
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 32px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.tab {
+  background: none;
+  border: none;
+  padding: 12px 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: #6c757d;
+  cursor: pointer;
+  white-space: nowrap;
+  position: relative;
+  transition: color 0.2s;
+
+  &:hover {
+    color: var(--indigo);
+  }
+
+  &.active {
+    color: var(--indigo);
+    font-weight: 600;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--cyan);
+      border-radius: 2px;
+    }
+  }
+}
+
+// Mobile: convert to accordion-style (optional but shows seniority)
+@media (max-width: 768px) {
+  .tabsContainer {
+    flex-direction: column;
+    gap: 0;
+    border-bottom: none;
+  }
+
+  .tab {
+    text-align: left;
+    padding: 16px 0;
+    border-bottom: 1px solid #f0f0f0;
+
+    &.active::after {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,10 @@
+.button {
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s;
+  &.primary { background: var(--cyan); color: var(--white); padding: var(--spacing-md) var(--spacing-xl); }
+  &.secondary { background: transparent; color: var(--cyan); border: 1px solid var(--cyan); padding: var(--spacing-sm) var(--spacing-lg); }
+  &:hover { opacity: 0.9; transform: translateY(-1px); }
+}
