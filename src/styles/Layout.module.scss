@@ -1,0 +1,47 @@
+// Layout.module.scss
+.layout {
+  display: flex;
+  min-height: 100vh;
+  background: #f8f9fa;
+}
+
+.main {
+  flex: 1;
+  background: #f8f9fa;
+  position: relative;
+  margin-left: 260px; /* width of sidebar */
+  transition: margin-left 0.3s ease-in-out;
+
+  @media (max-width: 768px) {
+    margin-left: 0;
+    padding-top: 80px; /* space for mobile header */
+  }
+}
+
+.sharedLogo {
+  position: absolute;
+  top: 20px;
+  left: 32px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 28px;
+  font-weight: 900;
+  color: #213f7d;
+  cursor: pointer;
+
+  img {
+    width: 40px;
+    height: 40px;
+  }
+
+  }
+
+  @media (max-width: 768px) {
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px;
+ for example
+  }
