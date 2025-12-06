@@ -16,7 +16,6 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({
         {/* The SINGLE logo that belongs to both */}
         <div className={styles.sharedLogo}>
           <img src="/logo.svg" alt="lendsqr" />
-          <span>lendsqr</span>
         </div>
         <Header /> {/* Header does NOT contain the logo anymore */}
         <main className={styles.content}>{children}</main>
