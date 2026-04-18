@@ -1,3 +1,4 @@
+@use 'sass:color';
 @use '../../styles/variables' as v;
 
 .loginPage {
@@ -17,6 +18,7 @@
     height: 100%;
     max-height: v.$layout-height; // 900px
     position: relative;
+    background-color: #FFFFFF;
 
     .logoWrapper {
       position: absolute;
@@ -25,6 +27,7 @@
       display: flex;
       align-items: center;
       gap: 10.58px; 
+      z-index: 10;
 
       .logoIcon {
         width: 24.75px;
@@ -42,15 +45,143 @@
 
     .heroWrapper {
       position: absolute;
-      top: 281px; // Exact Figma Coordinate
-      left: 67px;  // Exact Figma Coordinate
+      top: 281px;
+      left: 67px;
 
       .heroImage {
         width: 600px;
-        height: 337.57px; // Rounded from your Figma data
+        height: 337.57px;
         display: block;
         object-fit: contain;
       }
     }
-  }
-}
+
+    .formSection {
+      position: absolute;
+      top: 0;
+      left: 736px;
+      width: 704px;
+      height: 900px;
+      border-left: 2px solid rgba(84, 95, 125, 0.15);
+      background: #FFFFFF;
+      box-shadow: 0px 15px 90px 0px rgba(0, 0, 0, 0.03);
+      display: flex;
+      flex-direction: column;
+      padding-left: 100px; 
+      padding-top: 215px;
+
+      .welcomeTitle {
+        width: 183px;
+        height: 55px;
+        margin: 0;
+        color: #213F7D;
+        font-family: 'Avenir Next', sans-serif;
+        font-weight: 700;
+        font-size: 40px;
+        line-height: 1;
+        letter-spacing: -0.04em;
+      }
+
+      .subText {
+        width: 194px;
+        height: 28px;
+        margin-top: 10px;
+        color: #545F7D;
+        font-family: 'Avenir Next', sans-serif;
+        font-weight: 400;
+        font-size: 20px;
+      }
+
+      .loginForm {
+        margin-top: 60px;
+        display: flex;
+        flex-direction: column;
+
+        .inputGroup {
+          position: relative;
+          width: 447px;
+          margin-bottom: 24px;
+
+          .inputField {
+            width: 100%;
+            height: 50px;
+            border-radius: 5px;
+            border: 2px solid rgba(84, 95, 125, 0.15);
+            padding: 0 16px;
+            background: transparent;
+            font-family: 'Avenir Next', sans-serif;
+            font-size: 14px;
+            outline: none;
+            color: #545F7D;
+
+            &::placeholder {
+              color: #545F7D;
+              opacity: 0.6;
+            }
+          }
+
+          .showButton {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 379.95px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            color: #39CDCC;
+            font-family: 'Avenir Next', sans-serif;
+            font-weight: 600;
+            font-size: 12px;
+            letter-spacing: 0.1em;
+          }
+        }
+
+        .forgotPassword {
+          /* Specific Figma Properties */
+          width: 147px;
+          height: 17px;
+          margin-top: 0;
+          color: #39CDCC;
+          font-family: 'Avenir Next', sans-serif;
+          font-weight: 600;
+          font-size: 12px;
+          line-height: 100%;
+          letter-spacing: 0.1em; // 10%
+          text-align: right;
+          text-transform: uppercase;
+          text-decoration: none;
+          white-space: nowrap;
+          opacity: 1;
+
+          /* Alignment within the 447px form column */
+          align-self: flex-start; 
+          // To make it appear at Left: 836px, we keep it flex-start 
+          // because the parent padding-left (100px) already handles the 836px start.
+        }
+
+        .submitBtn {
+          width: 447px;
+          height: 48px;
+          margin-top: 30px;
+          background-color: #39CDCC;
+          color: #FFFFFF;
+          border: none;
+          border-radius: 8px;
+          font-family: 'Avenir Next', sans-serif;
+          font-weight: 600;
+          font-size: 14px;
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          &:hover {
+            background-color: color.adjust(#39CDCC, $lightness: -5%);
+          }
+        }
+      } // End loginForm
+    } // End formSection
+  } // End container
+} // End loginPage

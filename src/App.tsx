@@ -5,8 +5,9 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import Login from "./pages/login/Login"; // Adjusted to relative path for safety
-import "./styles/main.scss"; // Adjusted to your SCSS entry point
+import Login from "./pages/Login/Login";
+import Dashboard from "./pages/dashboard/Dashboard";
+import "./styles/main.scss";
 
 const App: React.FC = () => {
   return (
@@ -16,7 +17,10 @@ const App: React.FC = () => {
         <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/login" element={<Login />} />
 
-        {/* Placeholders for later — keeping it simple */}
+        {/* 2. Add the Dashboard Route */}
+        <Route path="/dashboard" element={<Dashboard />} />
+
+        {/* Fallback — redirect unknown paths to Login */}
         <Route path="*" element={<Navigate to="/login" />} />
       </Routes>
     </Router>
