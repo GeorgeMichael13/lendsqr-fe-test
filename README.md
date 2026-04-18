@@ -23,7 +23,7 @@ Storage: LocalStorage (for User Details persistence)
 
 Testing: Jest / React Testing Library
 
-Mock API: Mock.io (500 records generated)
+Mock API: Json-generator.com (500 records generated)
 
 Key Features & Architectural Decisions
 

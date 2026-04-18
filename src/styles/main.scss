@@ -1,0 +1,16 @@
+// src/styles/main.scss
+@use './variables' as v;
+
+// Initial Reset
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: none;
+
+}
+
+body {
+  background-color: #FFFFFF;
+  font-family: sans-serif; // We will update this to Work Sans once the page loads
+}

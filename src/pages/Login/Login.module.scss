@@ -1,0 +1,56 @@
+@use '../../styles/variables' as v;
+
+.loginPage {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  .container {
+    width: 100%;
+    max-width: v.$layout-width; // 1440px
+    height: 100%;
+    max-height: v.$layout-height; // 900px
+    position: relative;
+
+    .logoWrapper {
+      position: absolute;
+      top: 107.67px; 
+      left: 97px;
+      display: flex;
+      align-items: center;
+      gap: 10.58px; 
+
+      .logoIcon {
+        width: 24.75px;
+        height: 25px;
+      }
+
+      .logoText {
+        color: #213F7D;
+        font-family: 'Avenir Next', sans-serif;
+        font-weight: 700;
+        font-size: 32px;
+        text-transform: lowercase;
+      }
+    }
+
+    .heroWrapper {
+      position: absolute;
+      top: 281px; // Exact Figma Coordinate
+      left: 67px;  // Exact Figma Coordinate
+
+      .heroImage {
+        width: 600px;
+        height: 337.57px; // Rounded from your Figma data
+        display: block;
+        object-fit: contain;
+      }
+    }
+  }
+}
