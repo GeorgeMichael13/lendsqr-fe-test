@@ -7,6 +7,7 @@ const Dashboard: React.FC = () => {
   return (
     <div className={styles.dashboardWrapper}>
       <TopNav />
+      
 
       <div className={styles.layoutBody}>
         <BorrowerNav /> {/* Clean and reusable */}

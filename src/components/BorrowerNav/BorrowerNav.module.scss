@@ -14,69 +14,226 @@
   width: 100%;
   height: 100%;
 
-  
-   
- .navBox {
-  /* Your Exact Properties */
-  position: absolute;
-  width: 206px;
-  height: 19px;
-  top: 39px; 
-  left: 30px;
-  opacity: 1;
-
-  .vector1 {
-    /* Your Exact Properties */
+  .navBox {
     position: absolute;
-    width: 16px;
-    height: 7px;
-    top: 1px;
-    left: 0;
-    opacity: 1;
-  }
-
-  .vector2 {
-    /* Your Exact Properties */
-    position: absolute;
-    width: 16px;
-    height: 6px;
-    top: 9px;
-    left: 0;
-    opacity: 0.4; // Specified 0.4 opacity
-  }
-
-  .orgText {
-    /* Your Exact Properties */
-    position: absolute;
-    width: 157px;
+    width: 206px;
     height: 19px;
-    left: 26px; // Calculated: 56px (target) - 30px (box start)
-    top: 0; // Aligned with the 19px height box
+    top: 39px; 
+    left: 30px;
     opacity: 1;
 
-    color: #213F7D;
-    font-family: 'Work Sans', sans-serif;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 100%;
-    letter-spacing: 0px;
-    
-    display: flex;
-    align-items: center;
+    .vector1 {
+      position: absolute;
+      width: 16px;
+      height: 7px;
+      top: 1px;
+      left: 0;
+    }
+
+    .vector2 {
+      position: absolute;
+      width: 16px;
+      height: 6px;
+      top: 9px;
+      left: 0;
+      opacity: 0.4;
+    }
+
+    .orgText {
+      position: absolute;
+      width: 157px;
+      height: 19px;
+      left: 26px; 
+      top: 0;
+      color: #213F7D;
+      font-family: 'Work Sans', sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    .nextIcon {
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      top: 2px;
+      left: 192px;
+      transform: rotate(360deg);
+      cursor: pointer;
+    }
   }
-  .nextIcon {
-    /* Your Exact Properties */
-    position: absolute;
-    width: 14px;
-    height: 14px;
-    top: 2px; // Adjusted slightly for alignment within the 19px height
-    left: 192px; // Calculated: 222px (global) - 30px (box start)
-    opacity: 1;
-    
-    /* Angle: -90 deg */
-    transform: rotate(360deg);
-    
+
+  .navLink {
     cursor: pointer;
+    position: absolute;
+    width: 283px;
+    height: 40px;
+    left: 0;
+    top: 100px; 
+
+    .activeBase {
+      position: absolute;
+      width: 283px;
+      height: 40px;
+      top: 0; 
+      left: 0;
+      background: #39CDCC;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .activeStrip {
+      position: absolute;
+      width: 3px;
+      height: 40px;
+      top: 0; 
+      left: 0;
+      background: #39CDCC;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    &:hover {
+      .activeBase { opacity: 0.06; visibility: visible; }
+      .activeStrip { opacity: 1; visibility: visible; }
+      .secondaryBox { opacity: 1; }
+    }
+  }
+
+  .secondaryBox {
+    position: absolute;
+    width: 110px;
+    height: 19px;
+    top: 10px;
+    left: 30px;
+    opacity: 0.6;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+
+    .vector3 {
+      position: absolute;
+      width: 16px;
+      height: 7.54px;
+      top: 0.89px;
+      left: 0px;
+    }
+
+    .vector4 {
+      position: absolute;
+      width: 10.66px;
+      height: 9.29px;
+      top: 4.04px;
+      left: 2.67px;
+      opacity: 0.4;
+    }
+
+    .userFriendsIcon {
+      position: absolute;
+      width: 16px;
+      height: 12px;
+      left: 0;
+      top: 3px;
+      opacity: 1;
+    }
+
+    .dashboardText {
+      position: absolute;
+      width: 140px; 
+      height: 19px;
+      left: 26px; 
+      top: 0;
+      color: #213F7D;
+      font-family: 'Work Sans', sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 100%;
+      display: flex;
+      align-items: center;
+    }
   }
 }
+
+.sectionHeader {
+  position: absolute;
+  width: 75px;
+  height: 14px;
+  top: 170px;
+  left: 30px; // Aligned with the left: 29px from your request
+  opacity: 1;
+  color: #545F7D;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+}
+
+.navLink {
+  .userIcon {
+    position: absolute;
+    width: 16px;
+    height: 12.8px;
+    left: 0;
+    top: 3px;
+    opacity: 1;
+  }
+
+  .sackIcon {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    left: 0;
+    top: 1px;
+    opacity: 1;
+  }
+
+  .handshakeIcon {
+    position: absolute;
+    width: 19px;
+    height: 15.2px;
+    left: 0;
+    top: 2px;
+    opacity: 1;
+  }
+
+  .piggyIcon {
+    position: absolute;
+    width: 16px;
+    height: 14.22px;
+    left: 0;
+    top: 2px;
+    opacity: 1;
+  }
+
+  .loanRequestIcon {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    left: 0;
+    top: 2px;
+    opacity: 1;
+  }
+
+  .userCheckIcon {
+    position: absolute;
+    width: 16px;
+    height: 12.8px;
+    left: 0;
+    top: 3px;
+    opacity: 1;
+  }
+
+  .userTimeIcon {
+    position: absolute;
+    width: 16px;
+    height: 12.8px;
+    left: 0;
+    top: 3px;
+    opacity: 1;
+  }
 }
