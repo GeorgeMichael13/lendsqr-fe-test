@@ -7,20 +7,25 @@ import {
 } from "react-router-dom";
 import Login from "./pages/Login/Login";
 import Dashboard from "./pages/dashboard/Dashboard";
-import "./styles/main.scss";
+import UserPage from "./pages/users/UserPage";
 
 const App: React.FC = () => {
   return (
-    <Router>
+    <Router
+      future={{
+        v7_startTransition: true,
+        v7_relativeSplatPath: true,
+      }}
+    >
       <Routes>
-        {/* Force entry to Login */}
         <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/login" element={<Login />} />
 
-        {/* 2. Add the Dashboard Route */}
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard" element={<Dashboard />}>
+          <Route path="users" element={<UserPage />} />
+          <Route index element={null} />
+        </Route>
 
-        {/* Fallback — redirect unknown paths to Login */}
         <Route path="*" element={<Navigate to="/login" />} />
       </Routes>
     </Router>

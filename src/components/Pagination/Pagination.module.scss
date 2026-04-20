@@ -1,0 +1,67 @@
+.paginationWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1037px;
+  margin-top: 20px;
+  font-family: 'Work Sans', sans-serif;
+
+  .showingText {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #545F7D;
+
+    select {
+      background: rgba(33, 63, 125, 0.1);
+      border-radius: 4px;
+      border: none;
+      padding: 7px 12px;
+      color: #213F7D;
+      font-weight: 500;
+      cursor: pointer;
+    }
+  }
+
+  .pageControls {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    .navBtn {
+      background: rgba(33, 63, 125, 0.1);
+      border-radius: 4px;
+      border: none;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    }
+
+    .pageNumbers {
+      display: flex;
+      gap: 15px;
+      color: #545F7D;
+      font-size: 16px;
+
+      span {
+        cursor: pointer;
+        opacity: 0.6;
+
+        &.activePage {
+          font-weight: 500;
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
