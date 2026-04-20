@@ -1,24 +1,25 @@
 import React, { useEffect, useState } from "react";
 import UserTable from "@/components/UserTable/UserTable";
+import FilterDropdown from "@/components/Dropdown/Dropdown";
 import styles from "../../components/Pagination/Pagination.module.scss";
 
 const UserPage = ({ allUsers: initialUsers = [] }) => {
   const [allUsers, setAllUsers] = useState(initialUsers);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
   const usersPerPage = 9;
 
-  // Added fetching logic to ensure data is actually present
+  const toggleFilter = () => setIsFilterOpen(!isFilterOpen);
+
   useEffect(() => {
     const getInitialData = async () => {
       const cachedData = localStorage.getItem("lendsqr_users");
-
       if (cachedData) {
         setAllUsers(JSON.parse(cachedData));
         setLoading(false);
         return;
       }
-
       try {
         const response = await fetch(
           "https://lendsqr-api-test.free.beeceptor.com/users",
@@ -41,10 +42,16 @@ const UserPage = ({ allUsers: initialUsers = [] }) => {
     }
   }, [allUsers.length]);
 
+  // Ensure we are always slicing from the full user list
   const safeUsers = Array.isArray(allUsers) ? allUsers : [];
+
+  // Calculate indices based on the CURRENT page
   const indexOfLastUser = currentPage * usersPerPage;
   const indexOfFirstUser = indexOfLastUser - usersPerPage;
+
+  // Slice the 9 users for this specific page
   const currentUsers = safeUsers.slice(indexOfFirstUser, indexOfLastUser);
+
   const totalPages = Math.ceil(safeUsers.length / usersPerPage);
 
   const getPageNumbers = () => {
@@ -63,27 +70,41 @@ const UserPage = ({ allUsers: initialUsers = [] }) => {
     return pages;
   };
 
-  if (loading) {
+  if (loading)
     return <div style={{ padding: "50px" }}>Loading 500 records...</div>;
-  }
 
   return (
-    <div className={styles.dashboardContainer}>
-      <UserTable users={currentUsers} />
+    <div className={styles.dashboardContainer} style={{ position: "relative" }}>
+      <UserTable users={currentUsers} onFilterClick={toggleFilter} />
+
+      <FilterDropdown
+        isVisible={isFilterOpen}
+        onClose={() => setIsFilterOpen(false)}
+      />
 
       <div className={styles.paginationWrapper}>
         <div className={styles.showingText}>
           Showing
-          <select value={usersPerPage} readOnly>
-            <option value="9">9</option>
-          </select>
+          <div className={styles.selectWrapper}>
+            {/* Displaying current count vs total count */}
+            <select value={usersPerPage} readOnly>
+              <option value={usersPerPage}>
+                {Math.min(indexOfLastUser, safeUsers.length)}
+              </option>
+            </select>
+            <img
+              src="/pvector1.png"
+              alt="dropdown"
+              className={styles.selectIcon}
+            />
+          </div>
           out of {safeUsers.length}
         </div>
 
         <div className={styles.pageControls}>
           <button
             disabled={currentPage === 1}
-            onClick={() => setCurrentPage((prev) => prev - 1)}
+            onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
             className={styles.navBtn}
           >
             <img src="/pvector2.png" alt="prev" />
@@ -106,7 +127,9 @@ const UserPage = ({ allUsers: initialUsers = [] }) => {
 
           <button
             disabled={currentPage === totalPages || totalPages === 0}
-            onClick={() => setCurrentPage((prev) => prev + 1)}
+            onClick={() =>
+              setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+            }
             className={styles.navBtn}
           >
             <img src="/pvector3.png" alt="next" />

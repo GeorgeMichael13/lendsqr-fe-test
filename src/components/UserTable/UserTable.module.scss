@@ -15,16 +15,17 @@
 .tableBase {
   width: 100%;
   border-collapse: collapse;
-  table-layout: fixed;
+  /* Changed from fixed to auto so min-width works */
+  table-layout: auto;
 
   th,
   td {
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    padding-right: 10px;
+    padding-right: 20px;
+    text-align: left;
   }
 
+  /* Specific column widths */
   th:nth-child(3) {
     width: 20%;
   }
@@ -34,7 +35,6 @@
   }
 
   th {
-    text-align: left;
     font-family: 'Work Sans';
     font-weight: 600;
     font-size: 12px;
@@ -56,6 +56,15 @@
     font-size: 14px;
     color: #545F7D;
     vertical-align: middle;
+  }
+
+  /* Your requested adjustment */
+  .dateHeader, 
+  .dateCell {
+    min-width: 180px; /* Increased slightly to ensure NO dots */
+    white-space: nowrap;
+    overflow: visible; 
+    text-overflow: clip;
   }
 }
 

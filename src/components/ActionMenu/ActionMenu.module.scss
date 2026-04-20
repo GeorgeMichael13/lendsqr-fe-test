@@ -1,0 +1,56 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1100;
+  background: transparent;
+}
+
+.menuContainer {
+  position: absolute;
+  width: 180px;
+  height: 130px;
+  /* Adjusting coordinates to anchor to the table cell */
+  right: 20px;
+  top: 40px; 
+  
+  background: #FFFFFF;
+  border: 1px solid rgba(84, 95, 125, 0.04);
+  box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px 0;
+  z-index: 1200;
+  box-sizing: border-box;
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  padding: 8px 20px;
+  cursor: pointer;
+  gap: 10px;
+
+  &:hover {
+    background-color: #f8f9fb;
+  }
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+
+  span {
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    color: #545F7D;
+    white-space: nowrap;
+  }
+}
