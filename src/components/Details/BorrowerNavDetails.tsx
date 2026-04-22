@@ -1,17 +1,12 @@
 import React from "react";
-import { NavLink, useLocation } from "react-router-dom";
-import styles from "./BorrowerNav.module.scss";
+import { NavLink } from "react-router-dom";
+import styles from "./BorrowerNavDetails.module.scss";
 
-const BorrowerNav: React.FC = () => {
-  const location = useLocation();
-
-  // This matches the path defined in your App.tsx: path="/user-details/:id"
-  const isUserDetailsPage = location.pathname.includes("/user-details/");
-
+const BorrowerNavDetails: React.FC = () => {
   return (
     <aside className={styles.borrowerNav}>
       <div className={styles.navContainer}>
-        {/* First Box: Switch Organization */}
+        {/* Switch Org */}
         <div className={styles.navBox}>
           <img src="/Vector1.png" alt="" className={styles.vector1} />
           <img src="/Vector2.png" alt="" className={styles.vector2} />
@@ -19,8 +14,20 @@ const BorrowerNav: React.FC = () => {
           <img src="/next.png" alt="" className={styles.nextIcon} />
         </div>
 
-        {/* Dashboard Section */}
-        <div className={styles.navLink} style={{ top: "100px" }}>
+        {/* Dashboard */}
+        <NavLink
+          to="/dashboard"
+          end
+          className={({ isActive }) =>
+            isActive ? `${styles.navLink} ${styles.active}` : styles.navLink
+          }
+          style={{
+            top: "100px",
+            textDecoration: "none",
+            display: "block",
+            position: "absolute",
+          }}
+        >
           <div className={styles.activeBase}></div>
           <div className={styles.activeStrip}></div>
           <div className={styles.secondaryBox}>
@@ -28,9 +35,8 @@ const BorrowerNav: React.FC = () => {
             <img src="/Vector4.png" alt="" className={styles.vector4} />
             <span className={styles.dashboardText}>Dashboard</span>
           </div>
-        </div>
+        </NavLink>
 
-        {/* Section Header: CUSTOMERS */}
         <span className={styles.sectionHeader}>CUSTOMERS</span>
 
         {/* Users Link */}
@@ -58,7 +64,7 @@ const BorrowerNav: React.FC = () => {
           </div>
         </NavLink>
 
-        {/* Guarantors Link */}
+        {/* Guarantors */}
         <div className={styles.navLink} style={{ top: "244px" }}>
           <div className={styles.activeBase}></div>
           <div className={styles.activeStrip}></div>
@@ -68,7 +74,7 @@ const BorrowerNav: React.FC = () => {
           </div>
         </div>
 
-        {/* Loans Link */}
+        {/* Loans */}
         <div className={styles.navLink} style={{ top: "294px" }}>
           <div className={styles.activeBase}></div>
           <div className={styles.activeStrip}></div>
@@ -78,7 +84,7 @@ const BorrowerNav: React.FC = () => {
           </div>
         </div>
 
-        {/* Decision Models Link */}
+        {/* Decision Models */}
         <div className={styles.navLink} style={{ top: "344px" }}>
           <div className={styles.activeBase}></div>
           <div className={styles.activeStrip}></div>
@@ -88,7 +94,7 @@ const BorrowerNav: React.FC = () => {
           </div>
         </div>
 
-        {/* Savings Link */}
+        {/* Savings */}
         <div className={styles.navLink} style={{ top: "394px" }}>
           <div className={styles.activeBase}></div>
           <div className={styles.activeStrip}></div>
@@ -98,7 +104,7 @@ const BorrowerNav: React.FC = () => {
           </div>
         </div>
 
-        {/* Loan Requests Link */}
+        {/* Loan Requests */}
         <div className={styles.navLink} style={{ top: "444px" }}>
           <div className={styles.activeBase}></div>
           <div className={styles.activeStrip}></div>
@@ -112,7 +118,7 @@ const BorrowerNav: React.FC = () => {
           </div>
         </div>
 
-        {/* Whitelist Link */}
+        {/* Whitelist */}
         <div className={styles.navLink} style={{ top: "494px" }}>
           <div className={styles.activeBase}></div>
           <div className={styles.activeStrip}></div>
@@ -122,7 +128,7 @@ const BorrowerNav: React.FC = () => {
           </div>
         </div>
 
-        {/* Karma Link */}
+        {/* Karma */}
         <div className={styles.navLink} style={{ top: "544px" }}>
           <div className={styles.activeBase}></div>
           <div className={styles.activeStrip}></div>
@@ -132,12 +138,11 @@ const BorrowerNav: React.FC = () => {
           </div>
         </div>
 
-        {/* Section Header: BUSINESSES */}
         <span className={styles.sectionHeader} style={{ top: "615px" }}>
           BUSINESSES
         </span>
 
-        {/* Organization Link */}
+        {/* Organization */}
         <div className={styles.navLink} style={{ top: "640px" }}>
           <div className={styles.activeBase}></div>
           <div className={styles.activeStrip}></div>
@@ -151,7 +156,7 @@ const BorrowerNav: React.FC = () => {
           </div>
         </div>
 
-        {/* Loan Products Link */}
+        {/* Loan Products */}
         <div className={styles.navLink} style={{ top: "690px" }}>
           <div className={styles.activeBase}></div>
           <div className={styles.activeStrip}></div>
@@ -165,7 +170,7 @@ const BorrowerNav: React.FC = () => {
           </div>
         </div>
 
-        {/* Savings Products Link */}
+        {/* Savings Products */}
         <div className={styles.navLink} style={{ top: "740px" }}>
           <div className={styles.activeBase}></div>
           <div className={styles.activeStrip}></div>
@@ -175,7 +180,7 @@ const BorrowerNav: React.FC = () => {
           </div>
         </div>
 
-        {/* Fees and Charges Link */}
+        {/* Fees and Charges */}
         <div className={styles.navLink} style={{ top: "790px" }}>
           <div className={styles.activeBase}></div>
           <div className={styles.activeStrip}></div>
@@ -185,7 +190,7 @@ const BorrowerNav: React.FC = () => {
           </div>
         </div>
 
-        {/* Transactions Link */}
+        {/* Transactions */}
         <div className={styles.navLink} style={{ top: "840px" }}>
           <div className={styles.activeBase}></div>
           <div className={styles.activeStrip}></div>
@@ -195,7 +200,7 @@ const BorrowerNav: React.FC = () => {
           </div>
         </div>
 
-        {/* Services Link */}
+        {/* Services */}
         <div className={styles.navLink} style={{ top: "890px" }}>
           <div className={styles.activeBase}></div>
           <div className={styles.activeStrip}></div>
@@ -205,7 +210,7 @@ const BorrowerNav: React.FC = () => {
           </div>
         </div>
 
-        {/* Service Account Link */}
+        {/* Service Account */}
         <div className={styles.navLink} style={{ top: "940px" }}>
           <div className={styles.activeBase}></div>
           <div className={styles.activeStrip}></div>
@@ -219,7 +224,7 @@ const BorrowerNav: React.FC = () => {
           </div>
         </div>
 
-        {/* Settlements Link */}
+        {/* Settlements */}
         <div className={styles.navLink} style={{ top: "990px" }}>
           <div className={styles.activeBase}></div>
           <div className={styles.activeStrip}></div>
@@ -229,22 +234,21 @@ const BorrowerNav: React.FC = () => {
           </div>
         </div>
 
-        {/* Reports Link */}
+        {/* Reports */}
         <div className={styles.navLink} style={{ top: "1040px" }}>
           <div className={styles.activeBase}></div>
-          <div className={styles.activeStrip}></div>
+          <div className={styles.activeStrip} style={{ top: "10px" }}></div>
           <div className={styles.secondaryBox} style={{ top: "10px" }}>
             <img src="/chartbar.png" alt="" className={styles.reportsIcon} />
             <span className={styles.dashboardText}>Reports</span>
           </div>
         </div>
 
-        {/* Section Header: SETTINGS */}
         <span className={styles.sectionHeader} style={{ top: "1110px" }}>
           SETTINGS
         </span>
 
-        {/* Preferences Link */}
+        {/* Preferences */}
         <div className={styles.navLink} style={{ top: "1140px" }}>
           <div className={styles.activeBase}></div>
           <div className={styles.activeStrip}></div>
@@ -254,7 +258,7 @@ const BorrowerNav: React.FC = () => {
           </div>
         </div>
 
-        {/* Fees and Pricing Link */}
+        {/* Fees and Pricing */}
         <div className={styles.navLink} style={{ top: "1190px" }}>
           <div className={styles.activeBase}></div>
           <div className={styles.activeStrip}></div>
@@ -268,7 +272,7 @@ const BorrowerNav: React.FC = () => {
           </div>
         </div>
 
-        {/* Audit Logs Link */}
+        {/* Audit Logs */}
         <div className={styles.navLink} style={{ top: "1240px" }}>
           <div className={styles.activeBase}></div>
           <div className={styles.activeStrip}></div>
@@ -281,9 +285,43 @@ const BorrowerNav: React.FC = () => {
             <span className={styles.dashboardText}>Audit Logs</span>
           </div>
         </div>
+
+        {/* SYSTEM MESSAGES */}
+        <NavLink
+          to="/dashboard/system-messages"
+          className={({ isActive }) =>
+            isActive ? `${styles.navLink} ${styles.active}` : styles.navLink
+          }
+          style={{
+            top: "1290px",
+            textDecoration: "none",
+            display: "block",
+            position: "absolute",
+            zIndex: 10,
+          }}
+        >
+          <div className={styles.activeBase}></div>
+          <div className={styles.activeStrip}></div>
+          <div className={styles.secondaryBox} style={{ top: "10px" }}>
+            <img src="/tire.png" alt="" className={styles.tireIcon} />
+            <span className={styles.dashboardText}>Systems Messages</span>
+          </div>
+        </NavLink>
+
+        {/* FOOTER SECTION: Divider & Logout */}
+        <div className={styles.navFooter}>
+          <div className={styles.divider}></div>
+          <div className={styles.logoutWrapper}>
+            <img src="/signout.png" alt="" className={styles.logoutIcon} />
+            <span className={styles.logoutText}>Logout</span>
+          </div>
+        </div>
+
+        {/* Version Info */}
+        <span className={styles.versionText}>v1.2.0</span>
       </div>
     </aside>
   );
 };
 
-export default BorrowerNav;
+export default BorrowerNavDetails;

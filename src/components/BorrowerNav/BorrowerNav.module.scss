@@ -96,7 +96,7 @@
       transition: opacity 0.2s ease;
     }
 
-    &:hover {
+    &:hover, &.active {
       .activeBase { opacity: 0.06; visibility: visible; }
       .activeStrip { opacity: 1; visibility: visible; }
       .secondaryBox { opacity: 1; }
@@ -139,6 +139,14 @@
       opacity: 1;
     }
 
+    .tireIcon {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      left: 0;
+      top: 2px;
+    }
+
     .dashboardText {
       position: absolute;
       width: 160px; 
@@ -163,24 +171,6 @@
   height: 14px;
   top: 170px;
   left: 30px;
-  opacity: 1;
-  color: #545F7D;
-  font-family: 'Work Sans', sans-serif;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 100%;
-  letter-spacing: 0px;
-  text-transform: uppercase;
-  display: flex;
-  align-items: center;
-}
-
-.settingsHeader {
-  position: absolute;
-  width: 60px;
-  height: 14px;
-  top: 1208px;
-  left: 29px;
   opacity: 1;
   color: #545F7D;
   font-family: 'Work Sans', sans-serif;
@@ -225,7 +215,39 @@
   }
 
   .auditLogsIcon {
-    height: 21.33px; // specific height from your css
+    height: 21.33px; 
     top: 1px;
   }
+}
+
+
+.borrowerNav {
+  width: 283px;
+  min-height: 100vh;
+  background: #FFFFFF;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.04);
+  flex-shrink: 0;
+  position: sticky;
+  top: 100px;
+  transition: transform 0.3s ease-in-out;
+
+  @media (max-width: 1024px) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1100;
+    transform: translateX(-100%); // Hide off-screen
+    
+    &.open {
+      transform: translateX(0); // Slide in
+    }
+  }
+}
+
+// ... Keep your .navContainer, .navBox, and .navLink logic as is ...
+// Just ensure you remove absolute positioning where it breaks mobile stacking
+.navContainer {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
 }

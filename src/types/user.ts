@@ -1,7 +1,7 @@
 export interface User {
   id: string;
   organization: string;
-  username: string;
+  username: string; // The specific field for the table
   email: string;
   phoneNumber: string;
   dateJoined: string;

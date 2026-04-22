@@ -4,7 +4,6 @@ const USER_KEY = 'lendsqr_selected_user';
 const ALL_USERS_KEY = 'lendsqr_all_users';
 
 export const storage = {
-  // Save the 500 users locally after the first fetch
   saveAllUsers: (users: User[]) => {
     localStorage.setItem(ALL_USERS_KEY, JSON.stringify(users));
   },
@@ -14,7 +13,6 @@ export const storage = {
     return data ? JSON.parse(data) : null;
   },
 
-  // Save specific user for the Details Page
   saveSelectedUser: (user: User) => {
     localStorage.setItem(USER_KEY, JSON.stringify(user));
   },
@@ -22,5 +20,16 @@ export const storage = {
   getSelectedUser: (): User | null => {
     const data = localStorage.getItem(USER_KEY);
     return data ? JSON.parse(data) : null;
+  },
+
+  // NEW: Update a specific user within the master 500-record list
+  updateUserInMasterList: (userId: string, newStatus: User['status']) => {
+    const allUsers = storage.getAllUsers();
+    if (allUsers) {
+      const updatedList = allUsers.map(u => 
+        u.id === userId ? { ...u, status: newStatus } : u
+      );
+      storage.saveAllUsers(updatedList);
+    }
   }
 };

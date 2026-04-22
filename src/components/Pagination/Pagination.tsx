@@ -2,7 +2,7 @@ import { useState } from "react";
 import UserTable from "../UserTable/UserTable";
 import styles from "./Pagination.module.scss";
 
-const Pagination = ({ allUsers }) => {
+const UserPage = ({ allUsers }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const usersPerPage = 10;
 
@@ -24,23 +24,14 @@ const Pagination = ({ allUsers }) => {
       <div className={styles.paginationWrapper}>
         <div className={styles.showingText}>
           Showing
-          <div className={styles.selectContainer}>
-            <select
-              value={usersPerPage}
-              onChange={(e) => {
-                /* Handle change if needed */
-              }}
-            >
-              <option value="9">9</option>
-              <option value="10">10</option>
-              <option value="20">20</option>
-            </select>
-            <img
-              src="/pvector1.png"
-              alt="dropdown"
-              className={styles.selectIcon}
-            />
-          </div>
+          <select
+            value={usersPerPage}
+            onChange={(e) => {
+              /* Handle change if needed */
+            }}
+          >
+            <option value="9">9</option>
+          </select>
           out of {allUsers.length}
         </div>
 
@@ -74,5 +65,3 @@ const Pagination = ({ allUsers }) => {
     </div>
   );
 };
-
-export default pagination;

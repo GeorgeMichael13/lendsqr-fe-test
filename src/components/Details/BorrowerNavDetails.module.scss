@@ -1,0 +1,190 @@
+@use 'sass:color';
+
+.borrowerNav {
+  width: 283px;
+  height: 1574px;
+  background: #FFFFFF;
+  opacity: 1;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.04);
+  flex-shrink: 0;
+  position: sticky;
+  top: 100px;
+}
+
+.navContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  .navBox {
+    position: absolute;
+    width: 206px;
+    height: 19px;
+    top: 39px; 
+    left: 30px;
+    opacity: 1;
+
+    .vector1, .vector2 { position: absolute; width: 16px; left: 0; }
+    .vector1 { height: 7px; top: 1px; }
+    .vector2 { height: 6px; top: 9px; opacity: 0.4; }
+
+    .orgText {
+      position: absolute;
+      width: 157px;
+      height: 19px;
+      left: 26px; 
+      top: 0;
+      color: #213F7D;
+      font-family: 'Work Sans', sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+    }
+
+    .nextIcon {
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      top: 2px;
+      left: 192px;
+      cursor: pointer;
+    }
+  }
+
+  .navLink {
+    cursor: pointer;
+    position: absolute;
+    width: 283px;
+    height: 40px;
+    left: 0;
+    transition: all 0.2s ease;
+
+    .activeBase {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0; 
+      left: 0;
+      background: #39CDCC;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .activeStrip {
+      position: absolute;
+      width: 3px;
+      height: 100%;
+      top: 0; 
+      left: 0;
+      background: #39CDCC;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    &:hover, &.active {
+      .activeBase { opacity: 0.06 !important; }
+      .activeStrip { opacity: 1 !important; }
+      .secondaryBox { opacity: 1 !important; }
+    }
+  }
+
+  .secondaryBox {
+    position: absolute;
+    width: 200px;
+    height: 19px;
+    top: 10px;
+    left: 30px;
+    opacity: 0.6;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+
+    .dashboardText {
+      position: absolute;
+      left: 26px; 
+      top: 0;
+      color: #213F7D;
+      font-family: 'Work Sans', sans-serif;
+      font-size: 16px;
+      white-space: nowrap;
+    }
+  }
+}
+
+.sectionHeader {
+  position: absolute;
+  top: 170px;
+  left: 30px;
+  color: #545F7D;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+// Icon positioning
+.userIcon, .preferencesIcon, .tireIcon, .userFriendsIcon, .vector3, .vector4 {
+  position: absolute;
+  width: 16px;
+  left: 0;
+}
+
+.tireIcon, .preferencesIcon { height: 16px; top: 2px; }
+.userIcon, .userFriendsIcon { height: 12px; top: 3px; }
+
+// Footer & Logout Styles
+.navFooter {
+  position: absolute;
+  width: 100%;
+  top: 1400px; // Based on your divider top
+  left: 0;
+
+  .divider {
+    position: absolute;
+    width: 283px;
+    height: 0px;
+    left: -1px;
+    top: 0;
+    opacity: 0.1;
+    border: 1px solid #213F7D;
+  }
+
+  .logoutWrapper {
+    position: absolute;
+    width: 100%;
+    height: 40px;
+    top: 20px; // Offset from divider
+    left: 30px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    .logoutIcon {
+      width: 16px;
+      height: 16px;
+    }
+
+    .logoutText {
+      margin-left: 10px;
+      font-family: 'Work Sans';
+      font-weight: 400;
+      font-size: 16px;
+      color: #213F7D;
+    }
+  }
+}
+
+.versionText {
+  position: absolute;
+  width: 32px;
+  height: 14px;
+  top: 1500px;
+  left: 29px;
+  opacity: 1;
+  color: #213F7D;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0px;
+}

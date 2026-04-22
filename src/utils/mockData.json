@@ -1,0 +1,74 @@
+[
+  {
+    "id": "1",
+    "organization": "Lendsqr",
+    "username": "chinedu_dev",
+    "status": "Active",
+    "personalInfo": {
+      "fullName": "Chinedu Okoro",
+      "email": "chinedu@lendsqr.com",
+      "phone": "080 1234 5678",
+      "bvn": "22233344455",
+      "gender": "Male",
+      "maritalStatus": "Single",
+      "children": "None",
+      "residence": "Apartment"
+    },
+    "education": {
+      "level": "B.Sc",
+      "employmentStatus": "Employed",
+      "sector": "FinTech",
+      "duration": "2 years",
+      "officeEmail": "chinedu@lendsqr.com",
+      "monthlyIncome": "₦200,000.00 - ₦400,000.00",
+      "loanRepayment": "40,000"
+    },
+    "socials": {
+      "twitter": "@chinedu_dev",
+      "facebook": "Chinedu Okoro",
+      "instagram": "@chinedu_dev"
+    },
+    "guarantor": {
+      "fullName": "Obinna Okoro",
+      "phone": "080 5555 6666",
+      "email": "obinna@gmail.com",
+      "relationship": "Brother"
+    }
+  },
+  {
+    "id": "2",
+    "organization": "Itex",
+    "username": "amina_bakare",
+    "status": "Pending",
+    "personalInfo": {
+      "fullName": "Amina Bakare",
+      "email": "amina@itex.com",
+      "phone": "070 9876 5432",
+      "bvn": "11122233344",
+      "gender": "Female",
+      "maritalStatus": "Married",
+      "children": "2",
+      "residence": "Self Owned"
+    },
+    "education": {
+      "level": "M.Sc",
+      "employmentStatus": "Employed",
+      "sector": "Banking",
+      "duration": "5 years",
+      "officeEmail": "a.bakare@itex.com",
+      "monthlyIncome": "₦500,000.00 - ₦800,000.00",
+      "loanRepayment": "100,000"
+    },
+    "socials": {
+      "twitter": "@amina_b",
+      "facebook": "Amina Bakare",
+      "instagram": "@amina_b"
+    },
+    "guarantor": {
+      "fullName": "Sani Bakare",
+      "phone": "070 1111 2222",
+      "email": "sani@gmail.com",
+      "relationship": "Husband"
+    }
+  }
+]

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
+import { storage } from "@/utils/localStorage";
 import styles from "./UserTable.module.scss";
 import ActionMenu from "../ActionMenu/ActionMenu";
 
-// Mock interface based on your Figma columns
 interface User {
   id: string;
   organization: string;
@@ -13,7 +13,6 @@ interface User {
   status: "Active" | "Inactive" | "Pending" | "Blacklisted";
 }
 
-// Added onFilterClick to the interface
 interface UserTableProps {
   users: User[];
   onFilterClick: () => void;
@@ -22,8 +21,11 @@ interface UserTableProps {
 const UserTable: React.FC<UserTableProps> = ({ users, onFilterClick }) => {
   const [activeMenuId, setActiveMenuId] = useState<string | null>(null);
 
-  const handleToggleMenu = (id: string) => {
-    setActiveMenuId(activeMenuId === id ? null : id);
+  const handleToggleMenu = (e: React.MouseEvent, user: User) => {
+    e.stopPropagation();
+    // Save the user to storage immediately when menu is opened
+    storage.saveSelectedUser(user);
+    setActiveMenuId(activeMenuId === user.id ? null : user.id);
   };
 
   return (
@@ -36,8 +38,8 @@ const UserTable: React.FC<UserTableProps> = ({ users, onFilterClick }) => {
               <img
                 src="/filter-icon.png"
                 alt="filter"
+                className={styles.filterIcon}
                 onClick={onFilterClick}
-                style={{ cursor: "pointer" }}
               />
             </th>
             <th>
@@ -45,17 +47,17 @@ const UserTable: React.FC<UserTableProps> = ({ users, onFilterClick }) => {
               <img
                 src="/filter-icon.png"
                 alt="filter"
+                className={styles.filterIcon}
                 onClick={onFilterClick}
-                style={{ cursor: "pointer" }}
               />
             </th>
-            <th>
+            <th className={styles.emailCell}>
               Email{" "}
               <img
                 src="/filter-icon.png"
                 alt="filter"
+                className={styles.filterIcon}
                 onClick={onFilterClick}
-                style={{ cursor: "pointer" }}
               />
             </th>
             <th>
@@ -63,8 +65,8 @@ const UserTable: React.FC<UserTableProps> = ({ users, onFilterClick }) => {
               <img
                 src="/filter-icon.png"
                 alt="filter"
+                className={styles.filterIcon}
                 onClick={onFilterClick}
-                style={{ cursor: "pointer" }}
               />
             </th>
             <th className={styles.dateHeader}>
@@ -72,8 +74,8 @@ const UserTable: React.FC<UserTableProps> = ({ users, onFilterClick }) => {
               <img
                 src="/filter-icon.png"
                 alt="filter"
+                className={styles.filterIcon}
                 onClick={onFilterClick}
-                style={{ cursor: "pointer" }}
               />
             </th>
             <th>
@@ -81,47 +83,56 @@ const UserTable: React.FC<UserTableProps> = ({ users, onFilterClick }) => {
               <img
                 src="/filter-icon.png"
                 alt="filter"
+                className={styles.filterIcon}
                 onClick={onFilterClick}
-                style={{ cursor: "pointer" }}
               />
             </th>
             <th></th>
           </tr>
         </thead>
         <tbody>
-          {users?.map((user) => (
-            <tr key={user.id}>
-              <td>{user.organization}</td>
-              <td>{user.username}</td>
-              <td>{user.email}</td>
-              <td>{user.phone}</td>
-              <td className={styles.dateCell}>{user.dateJoined}</td>
-              <td>
-                <span
-                  className={`${styles.statusPill} ${
-                    styles[user.status.toLowerCase()]
-                  }`}
-                >
-                  {user.status}
-                </span>
-              </td>
-              <td className={styles.actions} style={{ position: "relative" }}>
-                <img
-                  src="/menu.png"
-                  alt="more"
-                  onClick={() => handleToggleMenu(user.id)}
-                  style={{ cursor: "pointer" }}
-                />
-
-                {activeMenuId === user.id && (
-                  <ActionMenu
-                    isVisible={true}
-                    onClose={() => setActiveMenuId(null)}
+          {users && users.length > 0 ? (
+            users.map((user) => (
+              <tr key={user.id} onClick={() => storage.saveSelectedUser(user)}>
+                <td>{user.organization}</td>
+                <td>
+                  {user.username ||
+                    (user.email ? user.email.split("@")[0] : "N/A")}
+                </td>
+                <td className={styles.emailCell}>{user.email}</td>
+                <td>{user.phone}</td>
+                <td className={styles.dateCell}>{user.dateJoined}</td>
+                <td>
+                  <span
+                    className={`${styles.statusPill} ${styles[user.status.toLowerCase()]}`}
+                  >
+                    {user.status}
+                  </span>
+                </td>
+                <td className={styles.actions}>
+                  <img
+                    src="/menu.png"
+                    alt="more"
+                    onClick={(e) => handleToggleMenu(e, user)}
+                    className={styles.menuTrigger}
                   />
-                )}
+                  {activeMenuId === user.id && (
+                    <ActionMenu
+                      isVisible={true}
+                      onClose={() => setActiveMenuId(null)}
+                      userId={user.id}
+                    />
+                  )}
+                </td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td colSpan={7} className={styles.noData}>
+                No users found.
               </td>
             </tr>
-          ))}
+          )}
         </tbody>
       </table>
     </div>

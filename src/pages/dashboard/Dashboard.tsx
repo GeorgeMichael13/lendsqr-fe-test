@@ -1,12 +1,18 @@
 import React from "react";
+
 import { Outlet, useLocation } from "react-router-dom";
+
 import TopNav from "../../components/topnav/TopNav";
+
 import BorrowerNav from "../../components/BorrowerNav/BorrowerNav";
+
 import SummaryCard from "../../components/SummaryCard/SummaryCard";
+
 import styles from "./Dashboard.module.scss";
 
 const Dashboard: React.FC = () => {
   const location = useLocation();
+
   const isUsersPage = location.pathname.includes("/dashboard/users");
 
   return (
@@ -15,6 +21,7 @@ const Dashboard: React.FC = () => {
 
       <div className={styles.layoutBody}>
         <BorrowerNav />
+
         <main className={styles.mainContent}>
           {isUsersPage && (
             <div className={styles.usersSection}>
@@ -27,18 +34,21 @@ const Dashboard: React.FC = () => {
                   count="2,453"
                   iconBgColor="rgba(223, 24, 255, 0.1)"
                 />
+
                 <SummaryCard
                   icon="/card2.png"
                   title="ACTIVE USERS"
                   count="2,453"
                   iconBgColor="rgba(87, 24, 255, 0.1)"
                 />
+
                 <SummaryCard
                   icon="/card3.png"
                   title="USERS WITH LOANS"
                   count="12,453"
                   iconBgColor="rgba(245, 95, 68, 0.1)"
                 />
+
                 <SummaryCard
                   icon="/card4.png"
                   title="USERS WITH SAVINGS"

@@ -103,3 +103,22 @@
   cursor: pointer;
   text-align: right;
 }
+.emailCell {
+  min-width: 200px; /* Adjust this value based on your Figma design */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tableWrapper {
+  width: 100%;
+  overflow-x: auto; // Crucial for mobile table viewing
+  background: #ffffff;
+  border: 1px solid rgba(33, 63, 125, 0.06);
+  border-radius: 4px;
+
+  table {
+    min-width: 800px; // Forces a scroll rather than squishing the text
+  }
+}
+
