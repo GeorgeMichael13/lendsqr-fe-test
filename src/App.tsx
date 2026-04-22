@@ -5,6 +5,11 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
+
+// 1. IMPORT YOUR GLOBAL SCSS HERE
+// Ensure the path correctly points to your main.scss file
+import "./styles/main.scss";
+
 import Login from "./pages/Login/Login";
 import Dashboard from "./pages/dashboard/Dashboard";
 import UserPage from "./pages/users/UserPage";

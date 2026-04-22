@@ -1,127 +1,83 @@
 .dashboardWrapper {
-
   width: 100%;
-
   max-width: 1440px;
-
   min-height: 100vh;
-
   background: #FBFBFB;
-
   margin: 0 auto;
-
   display: flex;
-
   flex-direction: column;
-
+  overflow-x: hidden;
 }
-
-
 
 .layoutBody {
-
   display: flex;
-
   flex: 1;
-
-
+  width: 100%;
+  position: relative;
 
   .mainContent {
-
     flex: 1;
-
-    padding: 60px 40px; // Standardized padding for the whole area
-
+    padding: 60px 40px; 
     background: #FBFBFB;
+    overflow-x: hidden; 
 
-    overflow-x: hidden; // Prevents cards from pushing past the screen edge
-
+    @media (max-width: 768px) {
+      padding: 30px 15px;
+      width: 100%;
+    }
   }
-
 }
-
-
 
 .usersSection {
-
   margin-bottom: 40px;
-
 }
-
-
 
 .userPageTitle {
-
   font-family: 'Work Sans', sans-serif;
-
   font-weight: 500;
-
   font-size: 24px;
-
   line-height: 100%;
-
   color: #213F7D;
-
-  margin: 0 0 40px 0; // Space between title and cards
-
-}
-
-
-
-.statsContainer {
-
-  display: flex;
-
-  gap: 26px; 
-
-  flex-wrap: nowrap; // This forces all 4 cards to stay on one line
-
-  width: 100%;
-
-  max-width: 1040px; // Ensures there is enough room for 4 cards + gaps
-
-  margin-bottom: 40px;
-
-  
-
-  /* Optional: If the screen is too small, allow horizontal scrolling 
-
-     instead of breaking the layout */
-
-  overflow-x: auto; 
-
-  padding-bottom: 10px; 
-
-}
-
-
-
-.statsContainer {
-
-  display: flex;
-
-  gap: 26px; 
-
-  overflow-x: auto; // Allow swiping through cards on mobile
-
-  padding-bottom: 15px;
-
-  
-
-  &::-webkit-scrollbar { display: none; } // Clean look
-
-}
-
-
-
-.mainContent {
-
-  padding: 60px 40px;
+  margin: 0 0 40px 0;
 
   @media (max-width: 768px) {
-
-    padding: 30px 15px;
-
+    text-align: center;
+    margin-bottom: 25px;
   }
-
 }
+
+.statsContainer {
+  display: flex;
+  gap: 26px; 
+  flex-wrap: nowrap; 
+  width: 100%;
+  max-width: 1040px; 
+  margin-bottom: 40px;
+  overflow-x: auto; 
+  padding-bottom: 15px;
+  -webkit-overflow-scrolling: touch; // Smooth scrolling for iOS
+
+  /* Hide scrollbar for a cleaner look while keeping functionality */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+
+  @media (max-width: 768px) {
+    gap: 15px;
+    padding-left: 5px; // Prevents card shadow clipping
+  }
+}
+
+/* Ensure individual cards within SummaryCard maintain a minimum width on mobile */
+.statsContainer > * {
+  flex: 0 0 auto; // Prevents cards from shrinking
+  width: 240px; // Sets a nice size for swipeable cards on mobile
+  
+  @media (min-width: 1100px) {
+    flex: 1;
+    width: auto;
+  }
+}
+
