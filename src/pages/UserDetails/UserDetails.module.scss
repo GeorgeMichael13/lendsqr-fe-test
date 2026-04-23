@@ -145,8 +145,9 @@
   @media (max-width: 768px) {
     flex-direction: column;
     height: auto;
-    padding-bottom: 60px;
-    align-items: flex-start;
+    padding-bottom: 80px; // Increased for scroll space
+    align-items: center; // Centered content on mobile
+    text-align: center;
   }
 
   .basicInfo {
@@ -154,7 +155,11 @@
     align-items: center;
     gap: 20px;
     padding-right: 30px;
-    @media (max-width: 768px) { padding: 0; margin-bottom: 20px; }
+    @media (max-width: 768px) { 
+        padding: 0; 
+        margin-bottom: 20px; 
+        flex-direction: column; // Stack avatar and name on mobile
+    }
 
     .avatarContainer {
       position: relative;
@@ -181,7 +186,13 @@
 
   .tierSection {
     padding: 0 30px;
-    @media (max-width: 768px) { padding: 0; margin-bottom: 20px; }
+    @media (max-width: 768px) { 
+        padding: 0; 
+        margin-bottom: 20px; 
+        display: flex; 
+        flex-direction: column; 
+        align-items: center; 
+    }
     p { font-family: 'Work Sans'; font-weight: 500; font-size: 14px; color: #545f7d; margin-bottom: 10px; }
     .stars { display: flex; gap: 4px; img { width: 16px; height: 16px; } }
   }
@@ -196,15 +207,23 @@
   .tabSection {
     position: absolute;
     bottom: 0;
-    left: 30px;
-    right: 30px;
+    left: 0;
+    right: 0;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
     overflow-x: auto;
-    gap: 20px;
-
+    gap: 10px;
+    padding: 0 20px; // Padding for touch targets
+    
+    // Hide scrollbar but keep functionality
+    -ms-overflow-style: none;
+    scrollbar-width: none;
     &::-webkit-scrollbar { display: none; }
+
+    @media (max-width: 768px) {
+        justify-content: flex-start; // Ensure they flow off screen if needed
+    }
 
     .tabItem {
       height: 100%;
@@ -213,7 +232,8 @@
       align-items: center;
       cursor: pointer;
       position: relative;
-      min-width: 120px;
+      min-width: 140px; // Consistent width for readability
+      flex-shrink: 0; // Prevent squishing
       white-space: nowrap;
 
       span { font-family: 'SF Compact Text', sans-serif; font-size: 16px; color: rgba(0, 0, 0, 0.8); padding-bottom: 10px; }
