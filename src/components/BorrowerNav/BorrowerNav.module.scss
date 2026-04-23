@@ -9,6 +9,8 @@
   flex-shrink: 0;
   position: sticky;
   top: 100px;
+  overflow-y: auto; // Added to allow scrolling through absolute items
+  overflow-x: hidden;
 }
 
 .navContainer {
@@ -220,34 +222,14 @@
   }
 }
 
-
-.borrowerNav {
-  width: 283px;
-  min-height: 100vh;
-  background: #FFFFFF;
-  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.04);
-  flex-shrink: 0;
-  position: sticky;
-  top: 100px;
-  transition: transform 0.3s ease-in-out;
-
-  @media (max-width: 1024px) {
+// Added Mobile Logic - Keeps everything else unaffected
+@media (max-width: 1024px) {
+  .borrowerNav {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1100;
-    transform: translateX(-100%); // Hide off-screen
-    
-    &.open {
-      transform: translateX(0); // Slide in
-    }
+    height: 100vh;
+    z-index: 1200;
+    // The transform is handled by the Dashboard's sidebarWrapper
   }
-}
-
-// ... Keep your .navContainer, .navBox, and .navLink logic as is ...
-// Just ensure you remove absolute positioning where it breaks mobile stacking
-.navContainer {
-  padding-top: 20px;
-  display: flex;
-  flex-direction: column;
 }

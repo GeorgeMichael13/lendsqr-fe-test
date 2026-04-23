@@ -15,6 +15,32 @@
   width: 100%;
   position: relative;
 
+  .sidebarWrapper {
+    width: 283px;
+    flex-shrink: 0;
+    background: #fff;
+    transition: transform 0.3s ease-in-out;
+
+    @media (max-width: 1024px) {
+      position: fixed;
+      top: 100px; 
+      left: 0;
+      height: calc(100vh - 100px);
+      width: 283px;
+      z-index: 1100; 
+      transform: translateX(-100%); 
+      
+      &.showMenu {
+        transform: translateX(0) !important; 
+      }
+    }
+    
+    @media (max-width: 768px) {
+      top: 70px;
+      height: calc(100vh - 70px);
+    }
+  }
+
   .mainContent {
     flex: 1;
     padding: 60px 40px; 
@@ -25,6 +51,23 @@
       padding: 30px 15px;
       width: 100%;
     }
+  }
+}
+
+.overlay {
+  display: none;
+  @media (max-width: 1024px) {
+    display: block;
+    position: fixed;
+    top: 100px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 999; 
+  }
+  @media (max-width: 768px) {
+    top: 70px;
   }
 }
 
@@ -49,35 +92,41 @@
 .statsContainer {
   display: flex;
   gap: 26px; 
-  flex-wrap: nowrap; 
+  flex-wrap: nowrap; // Default for desktop
   width: 100%;
   max-width: 1040px; 
   margin-bottom: 40px;
   overflow-x: auto; 
   padding-bottom: 15px;
-  -webkit-overflow-scrolling: touch; // Smooth scrolling for iOS
+  -webkit-overflow-scrolling: touch;
 
-  /* Hide scrollbar for a cleaner look while keeping functionality */
   &::-webkit-scrollbar {
     display: none;
   }
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
 
   @media (max-width: 768px) {
-    gap: 15px;
-    padding-left: 5px; // Prevents card shadow clipping
+    flex-wrap: wrap; // Enables the 2x2 grid
+    gap: 20px;
+    padding-left: 0;
+    justify-content: center;
+    overflow-x: visible; // Disable horizontal scroll to show grid
   }
 }
 
-/* Ensure individual cards within SummaryCard maintain a minimum width on mobile */
 .statsContainer > * {
-  flex: 0 0 auto; // Prevents cards from shrinking
-  width: 240px; // Sets a nice size for swipeable cards on mobile
+  flex: 0 0 auto;
+  width: 240px; 
   
+  @media (max-width: 768px) {
+    flex: 0 0 calc(50% - 10px); // Sets 2 columns (50% width minus half the gap)
+    width: auto;
+    min-width: 160px;
+  }
+
   @media (min-width: 1100px) {
     flex: 1;
     width: auto;
   }
 }
-

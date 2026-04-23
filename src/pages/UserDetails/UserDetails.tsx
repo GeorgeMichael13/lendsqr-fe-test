@@ -14,6 +14,9 @@ const UserDetails: React.FC = () => {
 
   const [user, setUser] = useState<User | null>(null);
   const [activeTab, setActiveTab] = useState("General Details");
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // Added for mobile menu
+
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   useEffect(() => {
     if (id) {
@@ -45,7 +48,6 @@ const UserDetails: React.FC = () => {
     }
   };
 
-  // Helper to safely handle monthlyIncome regardless of data type
   const formatIncome = (showFullRange: boolean = true) => {
     const income = user?.education?.monthlyIncome;
     if (!income) return "₦0.00";
@@ -75,9 +77,15 @@ const UserDetails: React.FC = () => {
 
   return (
     <div className={styles.pageContainer}>
-      <TopNav />
+      <TopNav onToggleMenu={toggleMenu} /> 
+      
       <div className={styles.mainLayout}>
-        <BorrowerNav />
+        <aside className={`${styles.sidebarWrapper} ${isMenuOpen ? styles.showMenu : ""}`}>
+          <BorrowerNav />
+        </aside>
+
+        {isMenuOpen && <div className={styles.overlay} onClick={toggleMenu} />}
+
         <main className={styles.contentArea}>
           <div className={styles.contentWrapper}>
             <div className={styles.headerSection}>

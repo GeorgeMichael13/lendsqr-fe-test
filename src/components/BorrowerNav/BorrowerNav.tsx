@@ -4,8 +4,6 @@ import styles from "./BorrowerNav.module.scss";
 
 const BorrowerNav: React.FC = () => {
   const location = useLocation();
-
-  // This matches the path defined in your App.tsx: path="/user-details/:id"
   const isUserDetailsPage = location.pathname.includes("/user-details/");
 
   return (

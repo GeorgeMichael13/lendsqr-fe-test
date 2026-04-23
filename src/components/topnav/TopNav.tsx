@@ -1,10 +1,20 @@
 import React from "react";
 import styles from "./TopNav.module.scss";
 
-const TopNav: React.FC = () => {
+interface TopNavProps {
+  onToggleMenu?: () => void;
+}
+
+const TopNav: React.FC<TopNavProps> = ({ onToggleMenu }) => {
   return (
     <nav className={styles.topNav}>
       <div className={styles.logoWrapper}>
+        <button className={styles.hamburgerBtn} onClick={onToggleMenu}>
+          <div className={styles.bar}></div>
+          <div className={styles.bar}></div>
+          <div className={styles.bar}></div>
+        </button>
+
         <img src="/Union.png" alt="Lendsqr Logo" className={styles.logoIcon} />
         <span className={styles.logoText}>lendsqr</span>
       </div>
@@ -29,9 +39,11 @@ const TopNav: React.FC = () => {
           alt="Notifications"
           className={styles.notificationIcon}
         />
-        <img src="/avatar.png" alt="User" className={styles.userAvatar} />
-        <span className={styles.userName}>Adedeji</span>
-        <img src="/dropdown.png" alt="Menu" className={styles.dropdownIcon} />
+        <div className={styles.userInfo}>
+          <img src="/avatar.png" alt="User" className={styles.userAvatar} />
+          <span className={styles.userName}>Adedeji</span>
+          <img src="/dropdown.png" alt="Menu" className={styles.dropdownIcon} />
+        </div>
       </div>
     </nav>
   );

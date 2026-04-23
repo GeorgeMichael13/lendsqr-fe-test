@@ -1,26 +1,27 @@
-import React from "react";
-
+import React, { useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
-
 import TopNav from "../../components/topnav/TopNav";
-
 import BorrowerNav from "../../components/BorrowerNav/BorrowerNav";
-
 import SummaryCard from "../../components/SummaryCard/SummaryCard";
-
 import styles from "./Dashboard.module.scss";
 
 const Dashboard: React.FC = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
-
   const isUsersPage = location.pathname.includes("/dashboard/users");
+
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
     <div className={styles.dashboardWrapper}>
-      <TopNav />
+      <TopNav onToggleMenu={toggleMenu} />
 
       <div className={styles.layoutBody}>
-        <BorrowerNav />
+        <aside className={`${styles.sidebarWrapper} ${isMenuOpen ? styles.showMenu : ""}`}>
+          <BorrowerNav />
+        </aside>
+
+        {isMenuOpen && <div className={styles.overlay} onClick={toggleMenu} />}
 
         <main className={styles.mainContent}>
           {isUsersPage && (
