@@ -4,8 +4,8 @@ This is a pixel-perfect implementation of the Lendsqr Admin Console, built as pa
 
 Live Link
 
-Deployment: https://georgemichael13-lendsqr-fe-test.vercel.app
-(Note: Ensure your Vercel/Netlify project name matches this exactly before final submission)
+Deployment: https://georgemichael13-lendsqr-fe-test.netlify.app
+
 
 Tech Stack & Tools
 
@@ -70,6 +70,5 @@ Decisions & Trade-offs
 
 Vite over CRA: Chosen for significantly faster build times and better Hot Module Replacement (HMR) during development.
 
-Context API: Used for state management to avoid "prop drilling" across the Sidebar and User views without the overhead of Redux for this specific scope.
 
 SCSS Modules: Employed to prevent style leakage and ensure that component styles remain encapsulated.
