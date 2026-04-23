@@ -14,7 +14,7 @@ const UserDetails: React.FC = () => {
 
   const [user, setUser] = useState<User | null>(null);
   const [activeTab, setActiveTab] = useState("General Details");
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // Added for mobile menu
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
@@ -146,6 +146,7 @@ const UserDetails: React.FC = () => {
                 <h3>{formatIncome(false)}</h3>
                 <p>9912345678/Providus Bank</p>
               </div>
+              
               <div className={styles.tabSection}>
                 {[
                   "General Details",
