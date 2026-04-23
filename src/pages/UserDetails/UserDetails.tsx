@@ -51,10 +51,8 @@ const UserDetails: React.FC = () => {
   const formatIncome = (showFullRange: boolean = true) => {
     const income = user?.education?.monthlyIncome;
     if (!income) return "₦0.00";
-
     let min = "";
     let max = "";
-
     if (Array.isArray(income)) {
       [min, max] = income;
     } else if (typeof income === "string") {
@@ -64,12 +62,9 @@ const UserDetails: React.FC = () => {
         min = income;
       }
     }
-
     if (!showFullRange) return min.startsWith("₦") ? min : `₦${min}`;
-
     const formattedMin = min.startsWith("₦") ? min : `₦${min}`;
     const formattedMax = max ? (max.startsWith("₦") ? max : `₦${max}`) : "";
-
     return formattedMax ? `${formattedMin} - ${formattedMax}` : formattedMin;
   };
 
@@ -89,28 +84,17 @@ const UserDetails: React.FC = () => {
         <main className={styles.contentArea}>
           <div className={styles.contentWrapper}>
             <div className={styles.headerSection}>
-              <button
-                className={styles.backButton}
-                onClick={() => navigate("/dashboard/users")}
-              >
+              <button className={styles.backButton} onClick={() => navigate("/dashboard/users")}>
                 <img src="/back.png" alt="back" className={styles.backIcon} />
                 <span>Back to Users</span>
               </button>
               <div className={styles.titleRow}>
                 <h2>User Details</h2>
                 <div className={styles.actionBtns}>
-                  <button
-                    className={styles.blacklistBtn}
-                    onClick={handleBlacklist}
-                    disabled={statusLoading}
-                  >
+                  <button className={styles.blacklistBtn} onClick={handleBlacklist} disabled={statusLoading}>
                     {statusLoading ? "Updating..." : "Blacklist User"}
                   </button>
-                  <button
-                    className={styles.activateBtn}
-                    onClick={handleActivate}
-                    disabled={statusLoading}
-                  >
+                  <button className={styles.activateBtn} onClick={handleActivate} disabled={statusLoading}>
                     {statusLoading ? "Updating..." : "Activate User"}
                   </button>
                 </div>
@@ -118,44 +102,37 @@ const UserDetails: React.FC = () => {
             </div>
 
             <div className={styles.userSummaryCard}>
-              <div className={styles.basicInfo}>
-                <div className={styles.avatarContainer}>
-                  <div className={styles.ellipse} />
-                  <img
-                    src={user.personalInfo?.avatar || "/avataricon.png"}
-                    alt="user"
-                    className={styles.avatarIcon}
-                  />
+              <div className={styles.topInfoRow}>
+                <div className={styles.basicInfo}>
+                  <div className={styles.avatarContainer}>
+                    <div className={styles.ellipse} />
+                    <img src={user.personalInfo?.avatar || "/avataricon.png"} alt="user" className={styles.avatarIcon} />
+                  </div>
+                  <div className={styles.nameSection}>
+                    <h3>{user.personalInfo?.fullName || "Grace Effiom"}</h3>
+                    <p>{user.id || "LSQ12345"}</p>
+                  </div>
                 </div>
-                <div className={styles.nameSection}>
-                  <h3>{user.personalInfo?.fullName || "Grace Effiom"}</h3>
-                  <p>{user.id || "LSQ12345"}</p>
+                
+                <div className={styles.verticalLine} />
+                
+                <div className={styles.tierSection}>
+                  <p>User's Tier</p>
+                  <div className={styles.stars}>
+                    <img src="/star3.png" alt="star" /><img src="/star2.png" alt="star" /><img src="/star1.png" alt="star" />
+                  </div>
                 </div>
-              </div>
-              <div className={styles.verticalLine} />
-              <div className={styles.tierSection}>
-                <p>User's Tier</p>
-                <div className={styles.stars}>
-                  <img src="/star3.png" alt="star" />
-                  <img src="/star2.png" alt="star" />
-                  <img src="/star1.png" alt="star" />
+                
+                <div className={styles.verticalLine} />
+                
+                <div className={styles.bankSection}>
+                  <h3>{formatIncome(false)}</h3>
+                  <p>9912345678/Providus Bank</p>
                 </div>
-              </div>
-              <div className={styles.verticalLine} />
-              <div className={styles.bankSection}>
-                <h3>{formatIncome(false)}</h3>
-                <p>9912345678/Providus Bank</p>
               </div>
               
               <div className={styles.tabSection}>
-                {[
-                  "General Details",
-                  "Documents",
-                  "Bank Details",
-                  "Loans",
-                  "Savings",
-                  "App and System",
-                ].map((tab) => (
+                {["General Details", "Documents", "Bank Details", "Loans", "Savings", "App and System"].map((tab) => (
                   <div
                     key={tab}
                     className={`${styles.tabItem} ${activeTab === tab ? styles.activeTab : ""}`}
@@ -169,127 +146,53 @@ const UserDetails: React.FC = () => {
             </div>
 
             <div className={styles.userMainCard}>
+              {/* Personal Info */}
               <section className={styles.infoSection}>
                 <h4>Personal Information</h4>
                 <div className={styles.infoGrid}>
-                  <div className={styles.infoItem}>
-                    <p>full Name</p>
-                    <span>{user.personalInfo?.fullName || "Grace Effiom"}</span>
-                  </div>
-                  <div className={styles.infoItem}>
-                    <p>Phone Number</p>
-                    <span>{user.personalInfo?.phone || "07060780922"}</span>
-                  </div>
-                  <div className={styles.infoItem}>
-                    <p>Email Address</p>
-                    <span>{user.personalInfo?.email || "grace@gmail.com"}</span>
-                  </div>
-                  <div className={styles.infoItem}>
-                    <p>Bvn</p>
-                    <span>{user.personalInfo?.bvn || "07060780922"}</span>
-                  </div>
-                  <div className={styles.infoItem}>
-                    <p>Gender</p>
-                    <span>{user.personalInfo?.gender || "Female"}</span>
-                  </div>
-                  <div className={styles.infoItem}>
-                    <p>Marital status</p>
-                    <span>{user.personalInfo?.maritalStatus || "Single"}</span>
-                  </div>
-                  <div className={styles.infoItem}>
-                    <p>Children</p>
-                    <span>{user.personalInfo?.children || "None"}</span>
-                  </div>
-                  <div className={styles.infoItem}>
-                    <p>Type of residence</p>
-                    <span>
-                      {user.personalInfo?.residence || "Parent’s Apartment"}
-                    </span>
-                  </div>
+                  <div className={styles.infoItem}><p>full Name</p><span>{user.personalInfo?.fullName || "Grace Effiom"}</span></div>
+                  <div className={styles.infoItem}><p>Phone Number</p><span>{user.personalInfo?.phone || "07060780922"}</span></div>
+                  <div className={styles.infoItem}><p>Email Address</p><span>{user.personalInfo?.email || "grace@gmail.com"}</span></div>
+                  <div className={styles.infoItem}><p>Bvn</p><span>{user.personalInfo?.bvn || "07060780922"}</span></div>
+                  <div className={styles.infoItem}><p>Gender</p><span>{user.personalInfo?.gender || "Female"}</span></div>
+                  <div className={styles.infoItem}><p>Marital status</p><span>{user.personalInfo?.maritalStatus || "Single"}</span></div>
+                  <div className={styles.infoItem}><p>Children</p><span>{user.personalInfo?.children || "None"}</span></div>
+                  <div className={styles.infoItem}><p>Type of residence</p><span>{user.personalInfo?.residence || "Parent’s Apartment"}</span></div>
                 </div>
               </section>
-
               <hr className={styles.divider} />
-
+              {/* Education */}
               <section className={styles.infoSection}>
                 <h4>Education and Employment</h4>
                 <div className={styles.infoGrid}>
-                  <div className={styles.infoItem}>
-                    <p>level of education</p>
-                    <span>{user.education?.level || "B.Sc"}</span>
-                  </div>
-                  <div className={styles.infoItem}>
-                    <p>employment status</p>
-                    <span>
-                      {user.education?.employmentStatus || "Employed"}
-                    </span>
-                  </div>
-                  <div className={styles.infoItem}>
-                    <p>sector of employment</p>
-                    <span>{user.education?.sector || "FinTech"}</span>
-                  </div>
-                  <div className={styles.infoItem}>
-                    <p>Duration of employment</p>
-                    <span>{user.education?.duration || "2 years"}</span>
-                  </div>
-                  <div className={styles.infoItem}>
-                    <p>office email</p>
-                    <span>
-                      {user.education?.officeEmail || "grace@lendsqr.com"}
-                    </span>
-                  </div>
-                  <div className={styles.infoItem}>
-                    <p>Monthly income</p>
-                    <span>{formatIncome(true)}</span>
-                  </div>
-                  <div className={styles.infoItem}>
-                    <p>loan repayment</p>
-                    <span>{user.education?.loanRepayment || "40,000"}</span>
-                  </div>
+                  <div className={styles.infoItem}><p>level of education</p><span>{user.education?.level || "B.Sc"}</span></div>
+                  <div className={styles.infoItem}><p>employment status</p><span>{user.education?.employmentStatus || "Employed"}</span></div>
+                  <div className={styles.infoItem}><p>sector of employment</p><span>{user.education?.sector || "FinTech"}</span></div>
+                  <div className={styles.infoItem}><p>Duration of employment</p><span>{user.education?.duration || "2 years"}</span></div>
+                  <div className={styles.infoItem}><p>office email</p><span>{user.education?.officeEmail || "grace@lendsqr.com"}</span></div>
+                  <div className={styles.infoItem}><p>Monthly income</p><span>{formatIncome(true)}</span></div>
+                  <div className={styles.infoItem}><p>loan repayment</p><span>{user.education?.loanRepayment || "40,000"}</span></div>
                 </div>
               </section>
-
               <hr className={styles.divider} />
-
+              {/* Socials */}
               <section className={styles.infoSection}>
                 <h4>Socials</h4>
                 <div className={styles.infoGrid}>
-                  <div className={styles.infoItem}>
-                    <p>Twitter</p>
-                    <span>{user.socials?.twitter || "@grace_effiom"}</span>
-                  </div>
-                  <div className={styles.infoItem}>
-                    <p>Facebook</p>
-                    <span>{user.socials?.facebook || "Grace Effiom"}</span>
-                  </div>
-                  <div className={styles.infoItem}>
-                    <p>Instagram</p>
-                    <span>{user.socials?.instagram || "@grace_effiom"}</span>
-                  </div>
+                  <div className={styles.infoItem}><p>Twitter</p><span>{user.socials?.twitter || "@grace_effiom"}</span></div>
+                  <div className={styles.infoItem}><p>Facebook</p><span>{user.socials?.facebook || "Grace Effiom"}</span></div>
+                  <div className={styles.infoItem}><p>Instagram</p><span>{user.socials?.instagram || "@grace_effiom"}</span></div>
                 </div>
               </section>
-
               <hr className={styles.divider} />
-
+              {/* Guarantor */}
               <section className={styles.infoSection}>
                 <h4>Guarantor</h4>
                 <div className={styles.infoGrid}>
-                  <div className={styles.infoItem}>
-                    <p>full Name</p>
-                    <span>{user.guarantor?.fullName || "Debby Ogana"}</span>
-                  </div>
-                  <div className={styles.infoItem}>
-                    <p>Phone Number</p>
-                    <span>{user.guarantor?.phone || "07060780922"}</span>
-                  </div>
-                  <div className={styles.infoItem}>
-                    <p>Email Address</p>
-                    <span>{user.guarantor?.email || "debby@gmail.com"}</span>
-                  </div>
-                  <div className={styles.infoItem}>
-                    <p>Relationship</p>
-                    <span>{user.guarantor?.relationship || "Sister"}</span>
-                  </div>
+                  <div className={styles.infoItem}><p>full Name</p><span>{user.guarantor?.fullName || "Debby Ogana"}</span></div>
+                  <div className={styles.infoItem}><p>Phone Number</p><span>{user.guarantor?.phone || "07060780922"}</span></div>
+                  <div className={styles.infoItem}><p>Email Address</p><span>{user.guarantor?.email || "debby@gmail.com"}</span></div>
+                  <div className={styles.infoItem}><p>Relationship</p><span>{user.guarantor?.relationship || "Sister"}</span></div>
                 </div>
               </section>
             </div>
